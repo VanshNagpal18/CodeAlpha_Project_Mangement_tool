@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Project Listing Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background: #f4f4f4;
+      background-image: url(m.jfif);
+      background-size: cover;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input, textarea, button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    .project-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .project-item {
+      background: white;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-left: 5px solid #007bff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .project-item h3 {
+      margin: 0 0 5px 0;
+    }
+
+    .project-item p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Project Listing</h1>
+
+  <form id="projectForm">
+    <input type="text" id="projectName" placeholder="Project Name" required>
+    <textarea id="projectDesc" placeholder="Project Description" required></textarea>
+    <button type="submit">Add Project</button>
+  </form>
+
+  <ul class="project-list" id="projectList">
+    <!-- Projects will be added here -->
+  </ul>
+
+  <script>
+    const form = document.getElementById('projectForm');
+    const projectList = document.getElementById('projectList');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('projectName').value.trim();
+      const desc = document.getElementById('projectDesc').value.trim();
+
+      if (name && desc) {
+        const listItem = document.createElement('li');
+        listItem.className = 'project-item';
+
+        listItem.innerHTML = `
+          <h3>${name}</h3>
+          <p>${desc}</p>
+        `;
+
+        projectList.appendChild(listItem);
+
+        // Clear input fields
+        form.reset();
+      } else {
+        alert('Please enter both project name and description.');
+      }
+    });
+  </script>
+
+</body>
+</html>

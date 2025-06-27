@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Project Status Pie Chart</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      background-color: #f9f9f9;
+    }
+
+    .chart-container {
+      width: 500px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h2>Project Status Overview</h2>
+  <div class="chart-container">
+    <canvas id="projectStatusChart"></canvas>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('projectStatusChart').getContext('2d');
+    const projectStatusChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: ['To Do', 'In Progress', 'Done'],
+        datasets: [{
+          label: 'Project Status',
+          data: [5, 3, 7], // Example data: 5 tasks To Do, 3 In Progress, 7 Done
+          backgroundColor: ['#ff6384', '#ffcd56', '#4bc0c0'],
+          borderColor: '#fff',
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom'
+          },
+          title: {
+            display: false
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
